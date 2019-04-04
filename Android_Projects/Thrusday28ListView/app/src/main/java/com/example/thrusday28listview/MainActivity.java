@@ -1,6 +1,7 @@
 package com.example.thrusday28listview;
 
 import android.content.Intent;
+import android.database.Cursor;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -28,7 +29,23 @@ public class MainActivity extends AppCompatActivity {
        onCall();
     }
 
-    public void onClick(View v)
+    public void addUser(View v)
+    {
+        EditText et = (EditText)findViewById(R.id.txtName);
+
+        DBHelper dbh = new DBHelper(this);
+
+        boolean result = dbh.addUser(et.getText().toString());
+        onCall();
+        if(result)
+          Toast.makeText(this, "Successfully", Toast.LENGTH_SHORT).show();
+        else
+            Toast.makeText(this, "unsuccessfully", Toast.LENGTH_SHORT).show();
+    }
+
+
+
+ /*   public void onClick(View v)
     {
         EditText et = (EditText)findViewById(R.id.txtName);
         list.add(et.getText().toString());
@@ -37,12 +54,22 @@ public class MainActivity extends AppCompatActivity {
 
         Toast.makeText(this, "Successfully", Toast.LENGTH_SHORT).show();
 
-    }
+    } */
     public void onCall()
     {
         ListView lv = (ListView) findViewById(R.id.list);
 
-        ArrayAdapter<String> userData = new ArrayAdapter<String>(this,R.layout.activity_list_item,R.id.userName,list);
+        ArrayList<String> userDataFromDB = new ArrayList<>();
+
+        DBHelper dbh = new DBHelper(this);
+        Cursor data = dbh.getData();
+
+        while(data.moveToNext()){
+
+            userDataFromDB.add(data.getString(1));
+
+        }
+        ArrayAdapter<String> userData = new ArrayAdapter<String>(this,R.layout.activity_list_item,R.id.userName,userDataFromDB);
 
 
 
@@ -53,7 +80,7 @@ public class MainActivity extends AppCompatActivity {
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
              //   Toast.makeText(MainActivity.this, list.get(position),Toast.LENGTH_SHORT).show();
                 //list.remove(position);
-                onCall();
+               // onCall();
                 Intent profile = new Intent(MainActivity.this,proflieActivity.class);
                profile.putExtra("userName",list.get(position));
                  startActivity(profile);
