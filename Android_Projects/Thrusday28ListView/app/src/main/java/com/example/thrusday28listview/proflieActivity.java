@@ -2,6 +2,7 @@ package com.example.thrusday28listview;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.TextView;
 
 public class proflieActivity extends AppCompatActivity {
@@ -16,5 +17,12 @@ public class proflieActivity extends AppCompatActivity {
         String name = getIntent().getStringExtra("userName");
 
         tv.setText(name);
+    }
+
+
+    public void onClickDelete(View v){
+
+
+
     }
 }

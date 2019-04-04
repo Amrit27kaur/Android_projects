@@ -26,14 +26,4 @@
         app:srcCompat="@mipmap/ic_launcher"
         tools:layout_editor_absoluteX="331dp" />
 
-    <Button
-        android:id="@+id/delBtn"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="24dp"
-        android:layout_marginLeft="24dp"
-        android:layout_marginTop="120dp"
-        android:text="Delete"
-        app:layout_constraintStart_toEndOf="@+id/userName"
-        app:layout_constraintTop_toTopOf="parent" />
 </android.support.constraint.ConstraintLayout>

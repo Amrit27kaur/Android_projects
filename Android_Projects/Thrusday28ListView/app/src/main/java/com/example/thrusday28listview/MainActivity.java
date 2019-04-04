@@ -59,7 +59,7 @@ public class MainActivity extends AppCompatActivity {
     {
         ListView lv = (ListView) findViewById(R.id.list);
 
-        ArrayList<String> userDataFromDB = new ArrayList<>();
+        final ArrayList<String> userDataFromDB = new ArrayList<>();
 
         DBHelper dbh = new DBHelper(this);
         Cursor data = dbh.getData();
@@ -80,9 +80,9 @@ public class MainActivity extends AppCompatActivity {
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
              //   Toast.makeText(MainActivity.this, list.get(position),Toast.LENGTH_SHORT).show();
                 //list.remove(position);
-               // onCall();
+                onCall();
                 Intent profile = new Intent(MainActivity.this,proflieActivity.class);
-               profile.putExtra("userName",list.get(position));
+               profile.putExtra("userName",userDataFromDB.get(position));
                  startActivity(profile);
             }
         });
