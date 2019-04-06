@@ -11,11 +11,11 @@ public class ProfileActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_profile);
 
-
         TextView tv = (TextView)findViewById(R.id.txt);
 
         String name = getIntent().getStringExtra("userName");
 
         tv.setText(name);
+
     }
 }

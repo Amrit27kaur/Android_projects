@@ -69,7 +69,7 @@ public class MainActivity extends AppCompatActivity {
             userDataFromDB.add(data.getString(1));
 
         }
-        ArrayAdapter<String> userData = new ArrayAdapter<String>(this,R.layout.activity_list_item,R.id.userName,userDataFromDB);
+            ArrayAdapter<String> userData = new ArrayAdapter<String>(this,R.layout.activity_list_item,R.id.userName,userDataFromDB);
 
 
 
